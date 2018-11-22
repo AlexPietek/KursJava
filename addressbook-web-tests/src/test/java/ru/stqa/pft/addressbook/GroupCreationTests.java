@@ -35,16 +35,15 @@ public class GroupCreationTests {
     gotoGroupPage();
     initGroupCreation();
     fillGroupForm(new GroupData("test1", "test2", "test3"));
-    sumitGroupCreation();
+    submitGroupCreation();
     returnToGroupPage();
-    //wd.findElement(By.linkText("Logout")).click();
   }
 
   private void returnToGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  private void sumitGroupCreation() {
+  private void submitGroupCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
