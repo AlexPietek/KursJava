@@ -5,13 +5,11 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
-  protected WebDriver wd;
-
+  public WebDriver wd;
   public HelperBase(WebDriver wd) {
     this.wd = wd;
   }
-
-  protected void type(By locator, String text) {
+  public void type(By locator, String text) {
     click(locator);
     if(text != null) {
       String existingText = wd.findElement(locator).getAttribute("value");
@@ -22,7 +20,7 @@ public class HelperBase {
     }
   }
 
-  protected void click(By locator) {
+  public void click(By locator) {
     wd.findElement(locator).click();
   }
 
