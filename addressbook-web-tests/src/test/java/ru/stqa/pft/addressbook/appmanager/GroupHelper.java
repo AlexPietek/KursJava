@@ -9,6 +9,7 @@ public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
     super(wd);
   }
+
   public void returnToGroupPage() {
     click(By.linkText("groups"));
   }
@@ -43,6 +44,6 @@ public class GroupHelper extends HelperBase {
   }
 
   public void submitGroupModification() {
-  click(By.name("update"));
+    click(By.name("update"));
   }
 }

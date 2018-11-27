@@ -23,20 +23,15 @@ public class ApplicationManager {
   }
 
   public void init() {
-    if(browser.equals(BrowserType.FIREFOX))
-    {
+    if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
-    }
-    else if (browser.equals(BrowserType.CHROME))
-    {
+    } else if (browser.equals(BrowserType.CHROME)) {
       wd = new ChromeDriver();
-    }
-    else if (browser.equals(BrowserType.EDGE))
-    {
+    } else if (browser.equals(BrowserType.EDGE)) {
       wd = new EdgeDriver();
     }
 
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
@@ -44,7 +39,6 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
-
 
   public void stop() {
     wd.quit();
