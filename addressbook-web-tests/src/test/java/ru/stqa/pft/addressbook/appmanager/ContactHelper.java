@@ -90,12 +90,12 @@ public class ContactHelper extends HelperBase {
       String lastname = cells.get(1).getText();
       String adress = cells.get(3).getText();
       String emails = cells.get(4).getText();
-      String [] splitedMails = emails.split("\n");
-      String email1 =  splitedMails[0];
+      String[] splitedMails = emails.split("\n");
+      String email1 = splitedMails[0];
       String email2 = splitedMails[1];
       String email3 = splitedMails[2];
       String phones = cells.get(5).getText();
-      String [] splitedPhones = phones.split("\n");
+      String[] splitedPhones = phones.split("\n");
       String homeNumber = splitedPhones[0];
       String mobileNumber = splitedPhones[1];
       String workNumber = splitedPhones[2];

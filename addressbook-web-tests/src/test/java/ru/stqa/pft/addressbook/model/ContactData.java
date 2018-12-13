@@ -38,7 +38,7 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(int id, String lastName, String firstName, String address,String mailAdress1, String mailAdress2, String mailAdress3, String homeNumber, String mobileNumber, String workNumber) {
+  public ContactData(int id, String lastName, String firstName, String address, String mailAdress1, String mailAdress2, String mailAdress3, String homeNumber, String mobileNumber, String workNumber) {
     this.id = id;
     this.firstName = firstName;
     this.middleName = null;
@@ -56,6 +56,7 @@ public class ContactData {
     this.mailAdress3 = mailAdress3;
     this.group = null;
   }
+
   public ContactData(int id, String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String mailAdress1, String mailAdress2, String mailAdress3, String group) {
     this.id = id;
     this.firstName = firstName;
