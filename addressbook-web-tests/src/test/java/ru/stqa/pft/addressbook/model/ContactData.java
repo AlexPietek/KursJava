@@ -38,6 +38,24 @@ public class ContactData {
     this.group = group;
   }
 
+  public ContactData(int id, String lastName, String firstName, String address,String mailAdress1, String mailAdress2, String mailAdress3, String homeNumber, String mobileNumber, String workNumber) {
+    this.id = id;
+    this.firstName = firstName;
+    this.middleName = null;
+    this.lastName = lastName;
+    this.nickname = null;
+    this.title = null;
+    this.company = null;
+    this.address = address;
+    this.homeNumber = homeNumber;
+    this.mobileNumber = mobileNumber;
+    this.workNumber = workNumber;
+    this.faxNumber = null;
+    this.mailAdress1 = mailAdress1;
+    this.mailAdress2 = mailAdress2;
+    this.mailAdress3 = mailAdress3;
+    this.group = null;
+  }
   public ContactData(int id, String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String mailAdress1, String mailAdress2, String mailAdress3, String group) {
     this.id = id;
     this.firstName = firstName;

@@ -87,7 +87,19 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstname = cells.get(2).getText();
-      ContactData contact = new ContactData(firstname, "None", "Jackowski", "TestMaster", "Master", "Legia Warszawa", "Warszawa", "111", "222", "333", "444", "myMail1", "myMail2", "myMail3", "test1");
+      String lastname = cells.get(1).getText();
+      String adress = cells.get(3).getText();
+      String emails = cells.get(4).getText();
+      String [] splitedMails = emails.split("\n");
+      String email1 =  splitedMails[0];
+      String email2 = splitedMails[1];
+      String email3 = splitedMails[2];
+      String phones = cells.get(5).getText();
+      String [] splitedPhones = phones.split("\n");
+      String homeNumber = splitedPhones[0];
+      String mobileNumber = splitedPhones[1];
+      String workNumber = splitedPhones[2];
+      ContactData contact = new ContactData(id, lastname, firstname, adress, email1, email2, email3, homeNumber, mobileNumber, workNumber);
       contacts.add(contact);
     }
     return contacts;
