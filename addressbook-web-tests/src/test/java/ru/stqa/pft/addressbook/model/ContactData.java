@@ -1,24 +1,30 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.util.Objects;
+
 public class ContactData {
 
 
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String nickname;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String homeNumber;
-  private final String mobileNumber;
-  private final String workNumber;
-  private final String faxNumber;
-  private final String mailAdress1;
-  private final String mailAdress2;
-  private final String mailAdress3;
+  private String firstName;
+  private String middleName;
+  private String lastName;
+  private String nickname;
+  private String title;
+  private String company;
+  private String address;
+  private String homeNumber;
+  private String mobileNumber;
+  private String workNumber;
+  private String faxNumber;
+  private String mailAdress1;
+  private String mailAdress2;
+  private String mailAdress3;
   private int id;
   private String group;
+
+  public ContactData() {
+
+  }
 
   public ContactData(String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String mailAdress1, String mailAdress2, String mailAdress3, String group) {
     this.firstName = firstName;
@@ -38,43 +44,6 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(int id, String lastName, String firstName, String address, String mailAdress1, String mailAdress2, String mailAdress3, String homeNumber, String mobileNumber, String workNumber) {
-    this.id = id;
-    this.firstName = firstName;
-    this.middleName = null;
-    this.lastName = lastName;
-    this.nickname = null;
-    this.title = null;
-    this.company = null;
-    this.address = address;
-    this.homeNumber = homeNumber;
-    this.mobileNumber = mobileNumber;
-    this.workNumber = workNumber;
-    this.faxNumber = null;
-    this.mailAdress1 = mailAdress1;
-    this.mailAdress2 = mailAdress2;
-    this.mailAdress3 = mailAdress3;
-    this.group = null;
-  }
-
-  public ContactData(int id, String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String mailAdress1, String mailAdress2, String mailAdress3, String group) {
-    this.id = id;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homeNumber = homeNumber;
-    this.mobileNumber = mobileNumber;
-    this.workNumber = workNumber;
-    this.faxNumber = faxNumber;
-    this.mailAdress1 = mailAdress1;
-    this.mailAdress2 = mailAdress2;
-    this.mailAdress3 = mailAdress3;
-    this.group = group;
-  }
 
   public String getFirstName() {
     return firstName;
@@ -140,6 +109,63 @@ public class ContactData {
     return id;
   }
 
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withHomeNumber(String homeNumber) {
+    this.homeNumber = homeNumber;
+    return this;
+  }
+
+  public ContactData withMobileNumber(String mobileNumber) {
+    this.mobileNumber = mobileNumber;
+    return this;
+  }
+
+  public ContactData withWorkNumber(String workNumber) {
+    this.workNumber = workNumber;
+    return this;
+  }
+
+  public ContactData withMailAdress1(String mailAdress1) {
+    this.mailAdress1 = mailAdress1;
+    return this;
+  }
+
+  public ContactData withMailAdress2(String mailAdress2) {
+    this.mailAdress2 = mailAdress2;
+    return this;
+  }
+
+  public ContactData withMailAdress3(String mailAdress3) {
+    this.mailAdress3 = mailAdress3;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
   @Override
   public String toString() {
     return "ContactData{" +
@@ -152,17 +178,21 @@ public class ContactData {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     ContactData that = (ContactData) o;
-
-    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    return id == that.id &&
+            Objects.equals(firstName, that.firstName) &&
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(address, that.address) &&
+            Objects.equals(homeNumber, that.homeNumber) &&
+            Objects.equals(mobileNumber, that.mobileNumber) &&
+            Objects.equals(workNumber, that.workNumber) &&
+            Objects.equals(mailAdress1, that.mailAdress1) &&
+            Objects.equals(mailAdress2, that.mailAdress2) &&
+            Objects.equals(mailAdress3, that.mailAdress3);
   }
 
   @Override
   public int hashCode() {
-    int result = firstName != null ? firstName.hashCode() : 0;
-    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-    return result;
+    return Objects.hash(firstName, lastName, address, homeNumber, mobileNumber, workNumber, mailAdress1, mailAdress2, mailAdress3, id);
   }
 }

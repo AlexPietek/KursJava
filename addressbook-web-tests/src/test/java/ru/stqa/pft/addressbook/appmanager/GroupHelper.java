@@ -66,19 +66,14 @@ public class GroupHelper extends HelperBase {
     selectGroupById(group.getId());
     deleteSelectedGroups();
   }
+
   public void deleteSelectedGroups() {
     click(By.name("delete"));
   }
-  public boolean isThereAGroup() {
-    return isElementPresent(By.name("selected[]"));
-  }
 
-  public int getGroupCount() {
-    return wd.findElements(By.name("selected[]")).size();
-  }
 
   public Groups all() {
-   Groups groups = new Groups();
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
