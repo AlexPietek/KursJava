@@ -59,7 +59,12 @@ public class ContactHelper extends HelperBase {
   public void initContactModification() {
     click(By.xpath("//img[@alt='Edit']"));
   }
-
+  public void initContactModificationById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='" + id + "']")));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+  }
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//img[@alt='Edit']"));
   }
@@ -81,7 +86,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void modify(ContactData contact) {
-    initContactModification();
+    initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     returnToHomePage();
@@ -131,5 +136,28 @@ public class ContactHelper extends HelperBase {
   private void closeAlert() {
     wd.switchTo().alert().accept();
     wd.findElement(By.cssSelector("div.msgbox"));
+  }
+
+  public ContactData infoFromEditForm(ContactData contact) {
+  initContactModificationById(contact.getId());
+  String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+  String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+  String address = wd.findElement(By.name("address")).getAttribute("value");
+  String mailadress1 = wd.findElement(By.name("email")).getAttribute("value");
+  String mailadress2 = wd.findElement(By.name("email2")).getAttribute("value");
+  String mailadress3 = wd.findElement(By.name("email3")).getAttribute("value");
+  String home = wd.findElement(By.name("home")).getAttribute("value");
+  String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+  String work = wd.findElement(By.name("work")).getAttribute("value");
+  return new ContactData().withId(contact.getId())
+          .withFirstName(firstname)
+          .withLastName(lastname)
+          .withAddress(address)
+          .withMailAdress1(mailadress1)
+          .withMailAdress2(mailadress2)
+          .withMailAdress3(mailadress3)
+          .withHomeNumber(home)
+          .withMobileNumber(mobile)
+          .withWorkNumber(work);
   }
 }
