@@ -21,6 +21,8 @@ public class ContactData {
   private String mailAdress3;
   private int id;
   private String group;
+  private String allPhones;
+  private String allMails;
 
   public ContactData() {
 
@@ -44,6 +46,23 @@ public class ContactData {
     this.group = group;
   }
 
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getAllMails() {
+    return allMails;
+  }
+
+  public ContactData withAllMails(String allMails) {
+    this.allMails = allMails;
+    return this;
+  }
 
   public String getFirstName() {
     return firstName;
@@ -73,15 +92,15 @@ public class ContactData {
     return address;
   }
 
-  public String getHomeNumber() {
+  public String getHomePhone() {
     return homeNumber;
   }
 
-  public String getMobileNumber() {
+  public String getMobilePhone() {
     return mobileNumber;
   }
 
-  public String getWorkNumber() {
+  public String getWorkPhone() {
     return workNumber;
   }
 

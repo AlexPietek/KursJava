@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
+  private Groups groupCache = null;
+
   public GroupHelper(WebDriver wd) {
     super(wd);
   }
@@ -33,7 +35,6 @@ public class GroupHelper extends HelperBase {
   public void initGroupCreation() {
     click(By.name("new"));
   }
-
 
   public void selectGroupById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
@@ -74,11 +75,8 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-  private Groups groupCache = null;
-
   public Groups all() {
-    if(groupCache!= null)
-    {
+    if (groupCache != null) {
       return new Groups(groupCache);
     }
     groupCache = new Groups();
