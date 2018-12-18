@@ -12,9 +12,9 @@ public class ContactData {
   private String title;
   private String company;
   private String address;
-  private String homeNumber;
-  private String mobileNumber;
-  private String workNumber;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
   private String faxNumber;
   private String mailAdress1;
   private String mailAdress2;
@@ -24,27 +24,21 @@ public class ContactData {
   private String allPhones;
   private String allMails;
 
+  public String getAllInfo() {
+    return allInfo;
+  }
+
+  public ContactData withAllInfo(String allInfo) {
+    this.allInfo = allInfo;
+    return this;
+  }
+
+  private String allInfo;
+
   public ContactData() {
 
   }
 
-  public ContactData(String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String homeNumber, String mobileNumber, String workNumber, String faxNumber, String mailAdress1, String mailAdress2, String mailAdress3, String group) {
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.homeNumber = homeNumber;
-    this.mobileNumber = mobileNumber;
-    this.workNumber = workNumber;
-    this.faxNumber = faxNumber;
-    this.mailAdress1 = mailAdress1;
-    this.mailAdress2 = mailAdress2;
-    this.mailAdress3 = mailAdress3;
-    this.group = group;
-  }
 
   public String getAllPhones() {
     return allPhones;
@@ -93,15 +87,15 @@ public class ContactData {
   }
 
   public String getHomePhone() {
-    return homeNumber;
+    return homePhone;
   }
 
   public String getMobilePhone() {
-    return mobileNumber;
+    return mobilePhone;
   }
 
   public String getWorkPhone() {
-    return workNumber;
+    return workPhone;
   }
 
   public String getFaxNumber() {
@@ -150,18 +144,18 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHomeNumber(String homeNumber) {
-    this.homeNumber = homeNumber;
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
     return this;
   }
 
-  public ContactData withMobileNumber(String mobileNumber) {
-    this.mobileNumber = mobileNumber;
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
     return this;
   }
 
-  public ContactData withWorkNumber(String workNumber) {
-    this.workNumber = workNumber;
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
     return this;
   }
 
@@ -202,9 +196,9 @@ public class ContactData {
             Objects.equals(firstName, that.firstName) &&
             Objects.equals(lastName, that.lastName) &&
             Objects.equals(address, that.address) &&
-            Objects.equals(homeNumber, that.homeNumber) &&
-            Objects.equals(mobileNumber, that.mobileNumber) &&
-            Objects.equals(workNumber, that.workNumber) &&
+            Objects.equals(homePhone, that.homePhone) &&
+            Objects.equals(mobilePhone, that.mobilePhone) &&
+            Objects.equals(workPhone, that.workPhone) &&
             Objects.equals(mailAdress1, that.mailAdress1) &&
             Objects.equals(mailAdress2, that.mailAdress2) &&
             Objects.equals(mailAdress3, that.mailAdress3);
@@ -212,6 +206,6 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, address, homeNumber, mobileNumber, workNumber, mailAdress1, mailAdress2, mailAdress3, id);
+    return Objects.hash(firstName, lastName, address, homePhone, mobilePhone, workPhone, mailAdress1, mailAdress2, mailAdress3, id);
   }
 }

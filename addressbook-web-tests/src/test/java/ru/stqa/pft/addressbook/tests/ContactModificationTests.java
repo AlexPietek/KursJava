@@ -20,9 +20,9 @@ public class ContactModificationTests extends TestBase {
               .withMailAdress1("myMail1")
               .withMailAdress2("myMail2")
               .withMailAdress3("myMail3")
-              .withHomeNumber("111")
-              .withMobileNumber("222")
-              .withWorkNumber("333")
+              .withHomePhone("111")
+              .withMobilePhone("222")
+              .withWorkPhone("333")
               .withGroup("test1"));
     }
   }
@@ -38,9 +38,9 @@ public class ContactModificationTests extends TestBase {
             .withMailAdress1("myMail1")
             .withMailAdress2("myMail2")
             .withMailAdress3("myMail3")
-            .withHomeNumber("111")
-            .withMobileNumber("222")
-            .withWorkNumber("333")
+            .withHomePhone("111")
+            .withMobilePhone("222")
+            .withWorkPhone("333")
             .withGroup("test1")
             .withId(modifiedContact.getId());
     app.contact().modify(contact);

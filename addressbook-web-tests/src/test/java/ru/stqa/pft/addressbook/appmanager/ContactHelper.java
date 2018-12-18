@@ -61,10 +61,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModificationById(int id) {
-    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='" + id + "']")));
-    WebElement row = checkbox.findElement(By.xpath("./../.."));
-    List<WebElement> cells = row.findElements(By.tagName("td"));
-    cells.get(7).findElement(By.tagName("a")).click();
+
+    getRowCellsById(id).get(7).findElement(By.tagName("a")).click();
   }
 
   public boolean isThereAContact() {
@@ -98,6 +96,17 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     click(By.xpath("//input[@value='Delete']"));
     closeAlert();
+  }
+  public void showDetailsById(int id)
+  {
+    getRowCellsById(id).get(6).findElement(By.tagName("a")).click();
+
+  }
+
+  private List<WebElement> getRowCellsById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='" + id + "']")));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    return row.findElements(By.tagName("td"));
   }
 
   public Contacts all() {
@@ -146,8 +155,13 @@ public class ContactHelper extends HelperBase {
             .withMailAdress1(mailadress1)
             .withMailAdress2(mailadress2)
             .withMailAdress3(mailadress3)
-            .withHomeNumber(home)
-            .withMobileNumber(mobile)
-            .withWorkNumber(work);
+            .withHomePhone(home)
+            .withMobilePhone(mobile)
+            .withWorkPhone(work);
+  }
+  public ContactData contactInfo () {
+    WebElement content = wd.findElement(By.id("content"));
+    String allInfo= content.getText();
+    return new ContactData().withAllInfo(allInfo);
   }
 }
