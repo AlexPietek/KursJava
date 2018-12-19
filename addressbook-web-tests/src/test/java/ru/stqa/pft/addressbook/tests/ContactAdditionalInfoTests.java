@@ -11,6 +11,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactAdditionalInfoTests extends TestBase{
 
+  public static String cleaned(String field) {
+    return field.replaceAll("\\s", "")
+            .replaceAll("\\n", "");
+  }
+
   @Test
   public void testAdditionalInfo() {
     app.goTo().gotoHomePage();
@@ -20,21 +25,12 @@ public class ContactAdditionalInfoTests extends TestBase{
     app.contact().showDetailsById(contact.getId());
     ContactData contactInfo = app.contact().contactInfo();
     assertThat(cleaned(contactInfo.getAllInfo()), equalTo(mergeAllData(contactToCompare)));
-
   }
+
   private String mergeAllData(ContactData contact){
-    return Arrays.asList(contact.getFirstName()+ contact.getLastName(), contact.getAddress(), contact.getHomePhone(), contact.getMobilePhone(),contact.getWorkPhone(), contact.getMailAdress1(),contact.getMailAdress2(), contact.getMailAdress3())
+    return Arrays.asList(contact.getFirstName()+ contact.getLastName(), contact.getAddress(), "H:" + contact.getHomePhone(), "M:" +contact.getMobilePhone(),"W:" +contact.getWorkPhone(), contact.getMailAdress1(),contact.getMailAdress2(), contact.getMailAdress3())
             .stream().filter((s) -> !s.equals(""))
             .map(ContactAdditionalInfoTests::cleaned)
             .collect(Collectors.joining(""));
-  }
-
-
-  public static String cleaned(String field) {
-    return field.replaceAll("\\s+", "")
-            .replaceAll("\n+", "")
-            .replaceAll("H:", "")
-            .replaceAll("M:", "")
-            .replaceAll("W:", "");
   }
 }
