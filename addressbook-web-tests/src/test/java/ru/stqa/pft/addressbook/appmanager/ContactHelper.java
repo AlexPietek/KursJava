@@ -14,6 +14,8 @@ import static org.testng.Assert.assertFalse;
 
 public class ContactHelper extends HelperBase {
 
+  private Contacts contactCache = null;
+
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
@@ -30,6 +32,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("middlename"), contactData.getMiddleName());
     type(By.name("lastname"), contactData.getLastName());
+    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("nickname"), contactData.getNickname());
     type(By.name("title"), contactData.getTitle());
     type(By.name("company"), contactData.getCompany());
@@ -41,6 +44,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getMailAdress1());
     type(By.name("email2"), contactData.getMailAdress2());
     type(By.name("email3"), contactData.getMailAdress3());
+
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -82,6 +86,7 @@ public class ContactHelper extends HelperBase {
     initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
+    contactCache = null;
     returnToHomePage();
   }
 
@@ -89,6 +94,7 @@ public class ContactHelper extends HelperBase {
     initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
+    contactCache = null;
     returnToHomePage();
   }
 
@@ -96,6 +102,7 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     click(By.xpath("//input[@value='Delete']"));
     closeAlert();
+    contactCache = null;
   }
   public void showDetailsById(int id)
   {
@@ -110,7 +117,12 @@ public class ContactHelper extends HelperBase {
   }
 
   public Contacts all() {
-    Contacts contacts = new Contacts();
+
+    if(contactCache != null)
+    {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
@@ -121,7 +133,7 @@ public class ContactHelper extends HelperBase {
       String adress = cells.get(3).getText();
       String allMails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
-      contacts.add(new ContactData().withId(id)
+      contactCache.add(new ContactData().withId(id)
               .withFirstName(firstname)
               .withLastName(lastname)
               .withAddress(adress)
@@ -129,7 +141,7 @@ public class ContactHelper extends HelperBase {
               .withAllPhones(allPhones)
               .withGroup("test1"));
     }
-    return contacts;
+    return contactCache;
   }
 
   private void closeAlert() {
@@ -163,5 +175,9 @@ public class ContactHelper extends HelperBase {
     WebElement content = wd.findElement(By.id("content"));
     String allInfo= content.getText();
     return new ContactData().withAllInfo(allInfo);
+  }
+
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }

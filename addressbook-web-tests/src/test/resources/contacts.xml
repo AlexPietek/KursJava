@@ -1,0 +1,44 @@
+<list>
+  <contact>
+    <firstName>Adam 0</firstName>
+    <lastName>Jackowski 0</lastName>
+    <nickname>Master 0</nickname>
+    <address>Warszawa</address>
+    <homePhone>111</homePhone>
+    <mobilePhone>222</mobilePhone>
+    <workPhone>333</workPhone>
+    <mailAdress1>myMail1</mailAdress1>
+    <mailAdress2>myMail2</mailAdress2>
+    <mailAdress3>myMail3</mailAdress3>
+    <photo>src\test\resources\Java.png</photo>
+    <group>test1</group>
+  </contact>
+  <contact>
+    <firstName>Adam 1</firstName>
+    <lastName>Jackowski 1</lastName>
+    <nickname>Master 1</nickname>
+    <address>Warszawa</address>
+    <homePhone>111</homePhone>
+    <mobilePhone>222</mobilePhone>
+    <workPhone>333</workPhone>
+    <mailAdress1>myMail1</mailAdress1>
+    <mailAdress2>myMail2</mailAdress2>
+    <mailAdress3>myMail3</mailAdress3>
+    <photo>src\test\resources\Java.png</photo>
+    <group>test1</group>
+  </contact>
+  <contact>
+    <firstName>Adam 2</firstName>
+    <lastName>Jackowski 2</lastName>
+    <nickname>Master 2</nickname>
+    <address>Warszawa</address>
+    <homePhone>111</homePhone>
+    <mobilePhone>222</mobilePhone>
+    <workPhone>333</workPhone>
+    <mailAdress1>myMail1</mailAdress1>
+    <mailAdress2>myMail2</mailAdress2>
+    <mailAdress3>myMail3</mailAdress3>
+    <photo>src\test\resources\Java.png</photo>
+    <group>test1</group>
+  </contact>
+</list>

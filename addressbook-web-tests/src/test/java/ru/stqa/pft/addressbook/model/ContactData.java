@@ -1,9 +1,12 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+import java.io.File;
 import java.util.Objects;
-
+@XStreamAlias("contact")
 public class ContactData {
-
 
   private String firstName;
   private String middleName;
@@ -19,26 +22,20 @@ public class ContactData {
   private String mailAdress1;
   private String mailAdress2;
   private String mailAdress3;
-  private int id;
+  private File photo;
+  @XStreamOmitField
+  private transient int id;
   private String group;
   private String allPhones;
   private String allMails;
-
-  public String getAllInfo() {
-    return allInfo;
-  }
-
-  public ContactData withAllInfo(String allInfo) {
-    this.allInfo = allInfo;
-    return this;
-  }
-
   private String allInfo;
+
+
+
 
   public ContactData() {
 
   }
-
 
   public String getAllPhones() {
     return allPhones;
@@ -104,6 +101,11 @@ public class ContactData {
 
   public String getMailAdress1() {
     return mailAdress1;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
   }
 
   public String getMailAdress2() {
@@ -178,6 +180,22 @@ public class ContactData {
     this.group = group;
     return this;
   }
+  public String getAllInfo() {
+    return allInfo;
+  }
+
+  public ContactData withAllInfo(String allInfo) {
+    this.allInfo = allInfo;
+    return this;
+  }
+  public File getPhoto() {
+    return photo;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
 
   @Override
   public String toString() {
@@ -193,19 +211,11 @@ public class ContactData {
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
     return id == that.id &&
-            Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName) &&
-            Objects.equals(address, that.address) &&
-            Objects.equals(homePhone, that.homePhone) &&
-            Objects.equals(mobilePhone, that.mobilePhone) &&
-            Objects.equals(workPhone, that.workPhone) &&
-            Objects.equals(mailAdress1, that.mailAdress1) &&
-            Objects.equals(mailAdress2, that.mailAdress2) &&
-            Objects.equals(mailAdress3, that.mailAdress3);
+            firstName.equals(that.firstName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, address, homePhone, mobilePhone, workPhone, mailAdress1, mailAdress2, mailAdress3, id);
+    return Objects.hash(firstName, id);
   }
 }

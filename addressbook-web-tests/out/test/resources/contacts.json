@@ -1,0 +1,50 @@
+[
+  {
+    "firstName": "Adam 0",
+    "lastName": "Jackowski 0",
+    "nickname": "Master 0",
+    "address": "Warszawa",
+    "homePhone": "111",
+    "mobilePhone": "222",
+    "workPhone": "333",
+    "mailAdress1": "myMail1",
+    "mailAdress2": "myMail2",
+    "mailAdress3": "myMail3",
+    "photo": {
+      "path": "src\\test\\resources\\Java.png"
+    },
+    "group": "test1"
+  },
+  {
+    "firstName": "Adam 1",
+    "lastName": "Jackowski 1",
+    "nickname": "Master 1",
+    "address": "Warszawa",
+    "homePhone": "111",
+    "mobilePhone": "222",
+    "workPhone": "333",
+    "mailAdress1": "myMail1",
+    "mailAdress2": "myMail2",
+    "mailAdress3": "myMail3",
+    "photo": {
+      "path": "src\\test\\resources\\Java.png"
+    },
+    "group": "test1"
+  },
+  {
+    "firstName": "Adam 2",
+    "lastName": "Jackowski 2",
+    "nickname": "Master 2",
+    "address": "Warszawa",
+    "homePhone": "111",
+    "mobilePhone": "222",
+    "workPhone": "333",
+    "mailAdress1": "myMail1",
+    "mailAdress2": "myMail2",
+    "mailAdress3": "myMail3",
+    "photo": {
+      "path": "src\\test\\resources\\Java.png"
+    },
+    "group": "test1"
+  }
+]
