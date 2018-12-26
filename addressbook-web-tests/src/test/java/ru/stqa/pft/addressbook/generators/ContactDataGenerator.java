@@ -95,7 +95,7 @@ public class ContactDataGenerator {
               .withHomePhone("111")
               .withMobilePhone("222")
               .withWorkPhone("333")
-              .withGroup("test1"));
+              .withGroup("test 1"));
     }
     return contacts;
 

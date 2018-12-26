@@ -153,6 +153,7 @@ public class ContactHelper extends HelperBase {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
     String address = wd.findElement(By.name("address")).getAttribute("value");
     String mailadress1 = wd.findElement(By.name("email")).getAttribute("value");
     String mailadress2 = wd.findElement(By.name("email2")).getAttribute("value");
@@ -163,6 +164,7 @@ public class ContactHelper extends HelperBase {
     return new ContactData().withId(contact.getId())
             .withFirstName(firstname)
             .withLastName(lastname)
+            .withNickname(nickname)
             .withAddress(address)
             .withMailAdress1(mailadress1)
             .withMailAdress2(mailadress2)

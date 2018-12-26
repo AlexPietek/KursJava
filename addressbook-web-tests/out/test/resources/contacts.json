@@ -13,7 +13,7 @@
     "photo": {
       "path": "src\\test\\resources\\Java.png"
     },
-    "group": "test1"
+    "group": "test 1"
   },
   {
     "firstName": "Adam 1",
@@ -29,7 +29,7 @@
     "photo": {
       "path": "src\\test\\resources\\Java.png"
     },
-    "group": "test1"
+    "group": "test 1"
   },
   {
     "firstName": "Adam 2",
@@ -45,6 +45,6 @@
     "photo": {
       "path": "src\\test\\resources\\Java.png"
     },
-    "group": "test1"
+    "group": "test 1"
   }
 ]
