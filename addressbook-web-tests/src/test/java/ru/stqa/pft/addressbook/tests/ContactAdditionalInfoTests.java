@@ -28,7 +28,18 @@ public class ContactAdditionalInfoTests extends TestBase{
   }
 
   private String mergeAllData(ContactData contact){
-    return Arrays.asList(contact.getFirstName()+ contact.getLastName(), contact.getAddress(), "H:" + contact.getHomePhone(), "M:" +contact.getMobilePhone(),"W:" +contact.getWorkPhone(), contact.getMailAdress1(),contact.getMailAdress2(), contact.getMailAdress3())
+    String  homePhone = "";
+    String mobilePhone = "";
+    String workPhone = "";
+    String groupMember = "Member of: test 1";
+    if(!contact.getHomePhone().equals(""))
+      homePhone = "H: " + contact.getHomePhone();
+    if(!contact.getMobilePhone().equals(""))
+      mobilePhone = "M: "+ contact.getMobilePhone();
+    if(!contact.getWorkPhone().equals(""))
+      workPhone = "W:" + contact.getWorkPhone();
+
+    return Arrays.asList(contact.getFirstName()+ contact.getLastName(),contact.getNickname() ,contact.getAddress(), homePhone, mobilePhone, workPhone, contact.getMailAdress1(),contact.getMailAdress2(), contact.getMailAdress3(), groupMember)
             .stream().filter((s) -> !s.equals(""))
             .map(ContactAdditionalInfoTests::cleaned)
             .collect(Collectors.joining(""));
