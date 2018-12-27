@@ -1,50 +1,50 @@
 [
   {
-    "firstName": "Adam 0",
-    "lastName": "Jackowski 0",
-    "nickname": "Master 0",
-    "address": "Warszawa",
-    "homePhone": "111",
-    "mobilePhone": "222",
-    "workPhone": "333",
-    "mailAdress1": "myMail1",
-    "mailAdress2": "myMail2",
-    "mailAdress3": "myMail3",
+    "firstName": "Adam0",
+    "lastName": "Jackowski0",
+    "nickname": "Master0",
+    "address": "Warszawa0",
+    "homePhone": "1110",
+    "mobilePhone": "2220",
+    "workPhone": "3330",
+    "mailAdress1": "myMail10",
+    "mailAdress2": "myMail20",
+    "mailAdress3": "myMail30",
     "photo": {
       "path": "src\\test\\resources\\Java.png"
     },
-    "group": "test 1"
+    "group": "test0"
   },
   {
-    "firstName": "Adam 1",
-    "lastName": "Jackowski 1",
-    "nickname": "Master 1",
-    "address": "Warszawa",
-    "homePhone": "111",
-    "mobilePhone": "222",
-    "workPhone": "333",
-    "mailAdress1": "myMail1",
-    "mailAdress2": "myMail2",
-    "mailAdress3": "myMail3",
+    "firstName": "Adam1",
+    "lastName": "Jackowski1",
+    "nickname": "Master1",
+    "address": "Warszawa1",
+    "homePhone": "1111",
+    "mobilePhone": "2221",
+    "workPhone": "3331",
+    "mailAdress1": "myMail11",
+    "mailAdress2": "myMail21",
+    "mailAdress3": "myMail31",
     "photo": {
       "path": "src\\test\\resources\\Java.png"
     },
-    "group": "test 1"
+    "group": "test1"
   },
   {
-    "firstName": "Adam 2",
-    "lastName": "Jackowski 2",
-    "nickname": "Master 2",
-    "address": "Warszawa",
-    "homePhone": "111",
-    "mobilePhone": "222",
-    "workPhone": "333",
-    "mailAdress1": "myMail1",
-    "mailAdress2": "myMail2",
-    "mailAdress3": "myMail3",
+    "firstName": "Adam2",
+    "lastName": "Jackowski2",
+    "nickname": "Master2",
+    "address": "Warszawa2",
+    "homePhone": "1112",
+    "mobilePhone": "2222",
+    "workPhone": "3332",
+    "mailAdress1": "myMail12",
+    "mailAdress2": "myMail22",
+    "mailAdress3": "myMail32",
     "photo": {
       "path": "src\\test\\resources\\Java.png"
     },
-    "group": "test 1"
+    "group": "test2"
   }
 ]

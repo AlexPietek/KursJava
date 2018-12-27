@@ -8,13 +8,11 @@ import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class ContactDataGenerator {
   @Parameter(names = "-c", description = "Contact count")
@@ -26,10 +24,16 @@ public class ContactDataGenerator {
   @Parameter(names = "-d", description = "Data format")
   public String format;
 
-  @Parameter(names = "-p", description = "Photo path")
-  public String path;
+//  @Parameter(names = "-p", description = "Photo path")
+//  public String path;
+
+  static Properties properties;
 
   public static void main(String[] args) throws IOException {
+    String target = System.getProperty("target", "local");
+    properties = new Properties();
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
     ContactDataGenerator generator = new ContactDataGenerator();
     JCommander jCommander = new JCommander(generator);
     try {
@@ -58,44 +62,44 @@ public class ContactDataGenerator {
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT, Modifier.VOLATILE).create();
     String json = gson.toJson(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+
+    try(Writer writer = new FileWriter(file)) {
+      writer.write(json);
+    }
   }
 
   private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
     XStream xStream = new XStream();
     xStream.processAnnotations(ContactData.class);
     String xml = xStream.toXML(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try(Writer writer = new FileWriter(file)) {
+      writer.write(xml);
+    }
   }
 
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-    Writer writer = new FileWriter(file);
-    for (ContactData contact : contacts) {
-      writer.write(String.format("%s;%s;%s; %s; %s;%s;%s %s;%s;%s\n", contact.getFirstName(), contact.getLastName(), contact.getNickname(), contact.getAddress(), contact.getPhoto().getPath(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(), contact.getMailAdress1(), contact.getMailAdress2(), contact.getMailAdress3()));
+    try(Writer writer = new FileWriter(file)) {
+      for (ContactData contact : contacts) {
+        writer.write(String.format("%s; %s; %s; %s; %s; %s; %s %s; %s; %s\n", contact.getFirstName(), contact.getLastName(), contact.getNickname(), contact.getAddress(), contact.getPhoto().getPath(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(), contact.getMailAdress1(), contact.getMailAdress2(), contact.getMailAdress3()));
+      }
     }
-    writer.close();
   }
 
   private List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    File photo = new File(path);
     for (int i = 0; i < count; i++) {
-      contacts.add(new ContactData().withFirstName(String.format("Adam %S", i))
-              .withLastName(String.format("Jackowski %S", i))
-              .withNickname(String.format("Master %S", i))
-              .withAddress("Warszawa")
-              .withPhoto(photo)
-              .withMailAdress1("myMail1")
-              .withMailAdress2("myMail2")
-              .withMailAdress3("myMail3")
-              .withHomePhone("111")
-              .withMobilePhone("222")
-              .withWorkPhone("333")
-              .withGroup("test 1"));
+      contacts.add(new ContactData().withFirstName(properties.getProperty("contactFirstName") + i)
+              .withLastName(properties.getProperty("contactLastName") + i)
+              .withNickname(properties.getProperty("contactNickname") + i)
+              .withAddress(properties.getProperty("contactAddress") + i)
+              .withPhoto(new File(properties.getProperty("photoPath")))
+              .withMailAdress1(properties.getProperty("contactMailAddress1") + i)
+              .withMailAdress2(properties.getProperty("contactMailAddress2") + i)
+              .withMailAdress3(properties.getProperty("contactMailAddress3") + i)
+              .withHomePhone(properties.getProperty("contactHomePhone") + i)
+              .withMobilePhone(properties.getProperty("contactMobilePhone") + i)
+              .withWorkPhone(properties.getProperty("contactWorkPhone") + i)
+              .withGroup(properties.getProperty("contactGroup") + i));
     }
     return contacts;
 

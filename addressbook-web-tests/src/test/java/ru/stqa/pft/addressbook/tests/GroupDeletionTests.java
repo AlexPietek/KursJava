@@ -14,12 +14,13 @@ public class GroupDeletionTests extends TestBase {
   public void ensurePrecondicions() {
     app.goTo().groupPage();
     if (app.group().all().size() == 0) {
-      app.group().create(new GroupData().withName("test1"));
+      app.group().create(new GroupData().withName(app.properties().getProperty("groupModifiedName"))
+              .withHeader(app.properties().getProperty("groupModifiedHeader"))
+              .withFooter(app.properties().getProperty("groupModifiedFooter")));
     }
   }
 
   @Test
-
   public void testGroupDeletion() {
 
     Groups before = app.group().all();
@@ -31,6 +32,4 @@ public class GroupDeletionTests extends TestBase {
     assertThat(after, equalTo(before.without(deletedGroup)));
 
   }
-
-
 }

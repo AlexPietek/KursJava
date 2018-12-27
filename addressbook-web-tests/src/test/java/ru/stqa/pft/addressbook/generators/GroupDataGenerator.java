@@ -7,15 +7,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.tests.TestBase;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
-public class GroupDataGenerator {
+public class GroupDataGenerator extends TestBase {
 
   @Parameter(names = "-c", description = "Group count")
   public int count;
@@ -26,7 +25,13 @@ public class GroupDataGenerator {
   @Parameter(names = "-d",description = "Data format")
   public String format;
 
+  static Properties properties;
+
   public static void main(String[] args) throws IOException {
+    String target = System.getProperty("target", "local");
+    properties = new Properties();
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
     GroupDataGenerator generator = new GroupDataGenerator();
     JCommander jCommander = new JCommander(generator);
    try {
@@ -63,36 +68,35 @@ public class GroupDataGenerator {
   private void saveAsJson(List<GroupData> groups, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try(Writer writer = new FileWriter(file)) {
+      writer.write(json);
+    }
   }
 
   private void saveAsXml(List<GroupData> groups, File file) throws IOException {
     XStream xStream = new XStream();
     xStream.processAnnotations(GroupData.class);
     String xml = xStream.toXML(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try(Writer writer = new FileWriter(file)) {
+      writer.write(xml);
+    }
 
   }
 
   private void saveAsCsv(List<GroupData> groups, File file) throws IOException {
-    Writer writer = new FileWriter(file);
-    for (GroupData group : groups)
-    {
-      writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(),group.getFooter()));
+    try(Writer writer = new FileWriter(file)) {
+      for (GroupData group : groups) {
+        writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+      }
     }
-    writer.close();
   }
 
   private List<GroupData> generateGroups(int count) {
     List<GroupData> groups = new ArrayList<GroupData>();
     for (int i = 0; i < count; i++) {
-      groups.add(new GroupData().withName(String.format("test %S", i))
-              .withHeader(String.format("header %S", i))
-              .withFooter(String.format("footer %S", i)));
+      groups.add(new GroupData().withName(properties.getProperty("groupName") + i)
+              .withHeader(properties.getProperty("groupHeader") + i)
+              .withFooter(properties.getProperty("groupFooter") + i));
     }
     return groups;
 
