@@ -33,7 +33,6 @@ public class ContactDataGenerator {
     String target = System.getProperty("target", "local");
     properties = new Properties();
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
     ContactDataGenerator generator = new ContactDataGenerator();
     JCommander jCommander = new JCommander(generator);
     try {

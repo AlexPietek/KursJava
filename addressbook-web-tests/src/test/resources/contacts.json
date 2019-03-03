@@ -10,9 +10,8 @@
     "mailAdress1": "myMail10",
     "mailAdress2": "myMail20",
     "mailAdress3": "myMail30",
-    "photo": {
-      "path": "src\\test\\resources\\Java.png"
-    },
+    "photo": "C:\\Users\\Adam\\Documents\\GitHub\\KursJava\\addressbook-web-tests\\src\\test\\resources\\Java.png",
+    "id": 0,
     "group": "test0"
   },
   {
@@ -26,9 +25,8 @@
     "mailAdress1": "myMail11",
     "mailAdress2": "myMail21",
     "mailAdress3": "myMail31",
-    "photo": {
-      "path": "src\\test\\resources\\Java.png"
-    },
+    "photo": "C:\\Users\\Adam\\Documents\\GitHub\\KursJava\\addressbook-web-tests\\src\\test\\resources\\Java.png",
+    "id": 0,
     "group": "test1"
   },
   {
@@ -42,9 +40,8 @@
     "mailAdress1": "myMail12",
     "mailAdress2": "myMail22",
     "mailAdress3": "myMail32",
-    "photo": {
-      "path": "src\\test\\resources\\Java.png"
-    },
+    "photo": "C:\\Users\\Adam\\Documents\\GitHub\\KursJava\\addressbook-web-tests\\src\\test\\resources\\Java.png",
+    "id": 0,
     "group": "test2"
   }
 ]
