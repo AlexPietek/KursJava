@@ -4,8 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -46,9 +48,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("email3"), contactData.getMailAdress3());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else {
-      assertFalse(isElementPresent(By.name("new_group")));
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      } else {
+        assertFalse(isElementPresent(By.name("new_group")));
+      }
     }
   }
 
@@ -139,7 +144,7 @@ public class ContactHelper extends HelperBase {
               .withAddress(adress)
               .withAllMails(allMails)
               .withAllPhones(allPhones)
-              .withGroup("test1"));
+              .inGroup(new GroupData().withName("test1")));
     }
     return contactCache;
   }

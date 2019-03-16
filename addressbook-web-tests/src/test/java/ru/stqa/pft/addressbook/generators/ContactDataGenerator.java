@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.*;
 import java.lang.reflect.Modifier;
@@ -98,7 +99,7 @@ public class ContactDataGenerator {
               .withHomePhone(properties.getProperty("contactHomePhone") + i)
               .withMobilePhone(properties.getProperty("contactMobilePhone") + i)
               .withWorkPhone(properties.getProperty("contactWorkPhone") + i)
-              .withGroup(properties.getProperty("contactGroup") + i));
+              .inGroup(new GroupData().withName(properties.getProperty("contactGroup") + i)));
     }
     return contacts;
 

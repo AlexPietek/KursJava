@@ -27,8 +27,8 @@ public class ContactModificationTests extends TestBase {
               .withMailAdress3(app.properties().getProperty("contactMailAddress3"))
               .withHomePhone(app.properties().getProperty("contactHomePhone"))
               .withMobilePhone(app.properties().getProperty("contactMobilePhone"))
-              .withWorkPhone(app.properties().getProperty("contactWorkPhone"))
-              .withGroup(app.properties().getProperty("contactGroup")));
+              .withWorkPhone(app.properties().getProperty("contactWorkPhone")));
+              //.withGroup(app.properties().getProperty("contactGroup")));
     }
   }
 
@@ -48,7 +48,7 @@ public class ContactModificationTests extends TestBase {
             .withHomePhone(app.properties().getProperty("contactHomePhone"))
             .withMobilePhone(app.properties().getProperty("contactMobilePhone"))
             .withWorkPhone(app.properties().getProperty("contactWorkPhone"))
-            .withGroup(app.properties().getProperty("contactGroup"))
+            //.withGroup(app.properties().getProperty("contactGroup"))
             .withId(modifiedContact.getId());
     app.contact().modify(contact);
     Contacts after = app.db().contacts();

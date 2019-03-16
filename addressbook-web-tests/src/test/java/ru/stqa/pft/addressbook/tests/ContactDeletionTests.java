@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 
@@ -29,7 +30,7 @@ public class ContactDeletionTests extends TestBase {
               .withHomePhone(app.properties().getProperty("contactHomePhone"))
               .withMobilePhone(app.properties().getProperty("contactMobilePhone"))
               .withWorkPhone(app.properties().getProperty("contactWorkPhone"))
-              .withGroup(app.properties().getProperty("contactGroup")));
+              .inGroup(new GroupData().withName(app.properties().getProperty("contactGroup"))));
     }
   }
 
