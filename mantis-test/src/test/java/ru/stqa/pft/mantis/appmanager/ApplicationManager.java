@@ -21,6 +21,8 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private ResetHelper resetHelper;
+  private SessionHelper sessionHelper;
+  private HttpSession httpSession;
 
 
   public ApplicationManager(String browser) {
@@ -92,5 +94,18 @@ public class ApplicationManager {
       resetHelper = new ResetHelper(this);
     }
     return resetHelper;
+  }
+
+  public SessionHelper session() {
+    if (sessionHelper == null) {
+      sessionHelper = new SessionHelper(this);
+    }
+    return sessionHelper;
+  }
+  public HttpSession httpSession() {
+    if (httpSession == null) {
+      httpSession = new HttpSession(this);
+    }
+    return httpSession;
   }
 }

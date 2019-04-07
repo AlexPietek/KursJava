@@ -7,10 +7,12 @@ public class ResetHelper extends HelperBase {
     super(app);
   }
 
-  public void login(String login, String password) {
-    wd.get(app.getProperty("web.baseUrl") + "/login_page.php");
-    type(By.name("username"), login);
-    type(By.name("email"), password);
-    click(By.cssSelector("input[value='Login']"));
+  public void changePassword (String confirmationLink, String newPassword)
+  {
+    wd.get(confirmationLink);
+    type(By.name("password"), newPassword);
+    type(By.name("password_confirm"), newPassword);
+    click(By.cssSelector("input[value='Update User']"));
   }
 }
+
